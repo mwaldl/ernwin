@@ -14,6 +14,7 @@ import glob
 import copy
 import logging
 import textwrap
+import six
 
 import Bio.PDB as bpdb
 import Bio.PDB.Chain as bpdbc
@@ -365,7 +366,7 @@ class SpatialModel:
         region as from there we can just randomly orient the first stem.
         '''
 
-        edge = self.bg.sorted_stem_iterator().next()
+        edge = six.next(self.bg.sorted_stem_iterator())
         define = 'start'
         return (edge, define, StemModel(edge))
 
